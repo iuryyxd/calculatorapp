@@ -40,11 +40,9 @@ function getResult() {
     if(eval(value) == Infinity || isNaN(eval(value))) isNotaNumber = true
 }
 
-function clearText(e){
+function clearText(){
     textDisplay.innerText = ""
     value = ""
-
-    console.log(e)
 }
 
 calculateButton.addEventListener("click", getResult)
