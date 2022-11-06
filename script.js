@@ -26,9 +26,8 @@ function getResult() {
 }
 
 function clearText(){
-    let newValue = value.substring(0, value.length - 1)
-    textDisplay.innerText = newValue
-    value = newValue
+    textDisplay.innerText = ""
+    value = ""
 }
 
 calculateButton.addEventListener("click", getResult)
