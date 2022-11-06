@@ -5,7 +5,7 @@ calculateButton = document.querySelector(".calculate")
 
 const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", "+", "/", "x", "(", ")", ".", "*"]
 
-let keyCode, value = "";
+let keyCode, value = "", calc;
 var isNotaNumber = false
 
 function getKey(e) {
@@ -14,7 +14,7 @@ function getKey(e) {
     keyCode = isKeyboard ? e.key : e.target.dataset.key
     
     if(keyCode == "Enter") return getResult()
-    if(keyCode == "Backspace") {
+    if(keyCode == "Backspace") { 
         let newValue = value.slice(0, -1)
         textDisplay.textContent = newValue
         value = newValue
@@ -36,8 +36,13 @@ function getKey(e) {
 }
 
 function getResult() {
-    textDisplay.innerText = eval(value)
+    calc = eval(value)
+    calc = calc == Infinity ? "Indefinido" : calc
+    calc = isNaN(calc) ? "Indefinido" : calc
+    textDisplay.innerText = calc
     if(eval(value) == Infinity || isNaN(eval(value))) isNotaNumber = true
+
+    value = calc.toString()
 }
 
 function clearText(){
