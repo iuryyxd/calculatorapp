@@ -43,6 +43,10 @@ function getResult() {
 function clearText(){
     textDisplay.innerText = ""
     value = ""
+
+    setInterval(() => {
+        document.querySelector(".clear-button").blur()
+    }, 100);
 }
 
 calculateButton.addEventListener("click", getResult)
