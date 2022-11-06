@@ -14,7 +14,11 @@ function getKey(e) {
     keyCode = isKeyboard ? e.key : e.target.dataset.key
     
     if(keyCode == "Enter") return getResult()
-    if(keyCode == "Backspace") return clearText()
+    if(keyCode == "Backspace") {
+        let newValue = value.slice(0, -1)
+        textDisplay.textContent = newValue
+        value = newValue
+    }
 
     if(allowedKeys.includes(keyCode)) {
         if(keyCode == "x") keyCode = "*"
@@ -36,9 +40,11 @@ function getResult() {
     if(eval(value) == Infinity || isNaN(eval(value))) isNotaNumber = true
 }
 
-function clearText(){
+function clearText(e){
     textDisplay.innerText = ""
     value = ""
+
+    console.log(e)
 }
 
 calculateButton.addEventListener("click", getResult)
