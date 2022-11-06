@@ -6,6 +6,7 @@ calculateButton = document.querySelector(".calculate")
 const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", "+", "/", "x", "(", ")", "."]
 
 let keyCode, value = "";
+var isNAN = false
 
 function getKey(e) {
 
@@ -14,6 +15,12 @@ function getKey(e) {
     
     if(allowedKeys.includes(keyCode)) {
         if(keyCode == "x") keyCode = "*"
+
+        if(isNAN) {
+            textDisplay.textContent = ""
+            isNAN = false
+        }
+
         value = textDisplay.textContent += keyCode;
         textDisplay.innerText = value
     }
@@ -23,6 +30,7 @@ function getKey(e) {
 
 function getResult() {
     textDisplay.innerText = eval(value)
+    if(eval(value) == Infinity || isNaN(eval(value))) isNAN = true
 }
 
 function clearText(){
