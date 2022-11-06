@@ -14,6 +14,7 @@ function getKey(e) {
     keyCode = isKeyboard ? e.key : e.target.dataset.key
     
     if(keyCode == "Enter") return getResult()
+    if(keyCode == "Backspace") return clearText()
 
     if(allowedKeys.includes(keyCode)) {
         if(keyCode == "x") keyCode = "*"

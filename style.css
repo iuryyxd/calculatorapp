@@ -84,3 +84,15 @@ body {
 .functions button[data-key="0"]{
     flex: 0.93;
 }
+
+footer {
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+}
+
+footer a {
+    color: #FF9500;
+    text-decoration: none;
+    font-weight: 600;
+}
