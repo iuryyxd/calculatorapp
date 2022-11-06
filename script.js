@@ -3,7 +3,7 @@ textDisplay = document.querySelector(".content span"),
 clearButton = document.querySelector(".clear-button"),
 calculateButton = document.querySelector(".calculate")
 
-const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", "+", "/", "x", "(", ")", "."]
+const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", "+", "/", "x", "(", ")", ".", "*"]
 
 let keyCode, value = "";
 var isNotaNumber = false
@@ -13,6 +13,8 @@ function getKey(e) {
     const isKeyboard = e.type === "keydown"
     keyCode = isKeyboard ? e.key : e.target.dataset.key
     
+    if(keyCode == "Enter") return getResult()
+
     if(allowedKeys.includes(keyCode)) {
         if(keyCode == "x") keyCode = "*"
 
